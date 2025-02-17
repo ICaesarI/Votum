@@ -6,6 +6,8 @@ interface Props{
     style?: object,
 }
 
+//Contenedor de contenido para las pantallas
+//children: Recibe codigo (hijo) lo cual se renderiza en este contenedor (padre)
 export default function ContentContainer({children, style}:Props){
     return(
         <View style={styles.container}>

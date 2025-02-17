@@ -6,7 +6,9 @@ interface Props{
     styleI?: object,
 }
 
-export default function HeaderContainerPrueba({children, styleI}:Props){
+//Contenedor header para las pantallas
+//children: Recibe codigo (hijo) lo cual se renderiza en este contenedor (padre)
+export default function HeaderContainer({children, styleI}:Props){
     return(
         <View style={[styles.container, styleI]}>
             {children}

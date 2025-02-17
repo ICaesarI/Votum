@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, Dimensions, TouchableOpacity} from 'react-native'
-import catgoriesJson from "./categories.json"
-import HeaderContainerPrueba from './HeaderContainer';
-import ContentContainer from './ContentContainer';
+import {View, Text} from 'react-native'
+import HeaderContainer from '../../components/HeaderContainer';
+import ContentContainer from '../../components/ContentContainer';
 import CategoryButton from '../../components/CategoryButton';
 import categoriesScreenStyles from '../../styles/CategoriesScreen/CategoriesScreenStyles';
+import catgoriesJson from "./categories.json"
+
 import globalStyles from '../../styles/globalStyles';
 
-export default function CategoriesScreen(){
-    const [list, setList] = useState<number[]>([]);
+//Pantalla donde el usuario elegira sus categorias para las votaciones
 
-    const addCategory = (id:number) => {
+export default function CategoriesScreen(){
+    const [list, setList] = useState<number[]>([]);//Lista para guardar los id's de categorias seleccionadas
+
+    const addCategory = (id:number) => {//Logica para añadir o sacar un id de la lista
         if(list.includes(id)){
            setList(list.filter(item => item !== id));
         }else{
@@ -19,13 +22,13 @@ export default function CategoriesScreen(){
     }
     return(
         <View style={globalStyles.container}>
-            <HeaderContainerPrueba>
+            <HeaderContainer>
                 <Text></Text>
-            </HeaderContainerPrueba>
+            </HeaderContainer>
 
             <ContentContainer>
                 <View style={categoriesScreenStyles.categoryContainer}>
-                    {catgoriesJson.categories.map((category) => (
+                    {catgoriesJson.categories.map((category) => (//Se toma la info del json para mapearlo a un componente
                         <CategoryButton 
                             key={category.id} 
                             id={category.id} 

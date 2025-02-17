@@ -1,8 +1,8 @@
 import React from 'react'
-import {View, Text, Image, Dimensions} from 'react-native'
+import {View, Text, Image} from 'react-native'
 import appLogoStyles from '../styles/appLogoStyles';
 
-const {width} = Dimensions.get("window");
+//Logo que se usara en Login y Home
 export default function AppLogo(){
     return(
         <View style={appLogoStyles.container}>

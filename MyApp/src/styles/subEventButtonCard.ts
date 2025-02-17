@@ -1,7 +1,7 @@
 import {Dimensions, StyleSheet} from "react-native"
 
 const {width} = Dimensions.get("window")
-const subEventButtonCard = StyleSheet.create({
+const subEventButtonCardStyles = StyleSheet.create({
     container:{
         width: width * 0.95,
         minHeight:width * 0.3,
@@ -58,4 +58,4 @@ const subEventButtonCard = StyleSheet.create({
     }
 })
 
-export default subEventButtonCard;
+export default subEventButtonCardStyles;

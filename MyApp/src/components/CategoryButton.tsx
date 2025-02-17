@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import categoryButtonStyles from '../styles/categoryButtonStyles';
+
+//Categorias predefinidas para las votaciones
 
 interface Props{
     name:string,
@@ -9,11 +11,13 @@ interface Props{
 }
 
 export default function CategoryButton({name, id, addCategory}:Props){
+    //Bandera para identificar si se presiono la categoria
     const [flag, setFlag] = useState(false);
+
 
     const handleOnPress = () => {
         setFlag(!flag);
-        addCategory(id);
+        addCategory(id);//Se añade la categoria a una lista en CategoryScreen
     }
 
     return(
