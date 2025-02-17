@@ -1,0 +1,16 @@
+{
+    "sub_events":[
+        {
+            "id": 1,
+            "background_name": "Nominaciones"
+        },
+        {
+            "id": 2,
+            "background_name": "VotacionesPrevias"
+        },
+        {
+            "id": 3,
+            "background_name": "BergamotaFest"
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "categories": [
+      {
+          "id": 1,
+          "name": "El Más Guapo"
+      },
+      {
+          "id": 2,
+          "name": "El Más Divertido"
+      },
+      {
+          "id": 3,
+          "name": "El Más Inteligente"
+      },
+      {
+          "id": 4,
+          "name": "El Más Pendejo"
+      },
+      {
+          "id": 5,
+          "name": "El Más Bromista"
+      },
+      {
+          "id": 6,
+          "name": "El Más Estudioso"
+      },
+      {
+          "id": 7,
+          "name": "El Mejor Video"
+      },
+      {
+          "id": 8,
+          "name": "El Más Cabezón"
+      },
+      {
+          "id": 9,
+          "name": "El Más Envidioso"
+      },
+      {
+          "id": 10,
+          "name": "El Más Despistado"
+      },
+      {
+          "id": 11,
+          "name": "El Más Simpático"
+      },
+      {
+          "id": 12,
+          "name": "El Más Rudo"
+      }
+    ]
+  }
+  

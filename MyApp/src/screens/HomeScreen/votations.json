@@ -1,0 +1,32 @@
+{
+    "votations":[
+        {
+            "id": "1",
+            "title": "BergamotaFest 20245",
+            "date": "30/05/2024",
+            "status": "Programado",
+            "image": "bergamotaSquad"
+        },
+        {
+            "id": "2",
+            "title": "Reta",
+            "date": "20/04/2024",
+            "status": "Programado",
+            "image": "retaFutbol"
+        },
+        {
+            "id": "3",
+            "title": "Viaje Tepa",
+            "date": "30/06/2024",
+            "status": "Programado",
+            "image": "tepatitlan"
+        },
+        {
+            "id": "4",
+            "title": "Velada Boxeo",
+            "date": "12/07/2024",
+            "status": "Programado",
+            "image": "veladaBox"
+        }
+    ]
+}

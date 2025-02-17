@@ -13,8 +13,11 @@ export default function InputComponent({placeholder, icon, isShow}:Props){
   const [showPassword, setShowPassword] = useState(true);
   const [user, setUser] = useState("");
 
-  const handleUserText = (text:string) => {
+  const handleInputText = (text:string) => {
     setUser(text);
+    if(text === "Sherlyn"){
+      alert("ERES SHERLYN");
+    }
     console.log(user);
   }
 
@@ -27,7 +30,7 @@ export default function InputComponent({placeholder, icon, isShow}:Props){
           placeholder={placeholder}
           secureTextEntry={isShow ? showPassword : false}
           placeholderTextColor="rgba(48, 122, 89, 0.5)"
-          onChangeText={handleUserText}
+          onChangeText={handleInputText}
         />
         {isShow && (
           <View style={[inputStyles.iconContainer,inputStyles.iconContainerEyeIcon]}>
