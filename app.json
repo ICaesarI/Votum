@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "votum",
-    "slug": "votum",
+    "name": "VotumWork",
+    "slug": "VotumWork",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,15 +36,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "FIREBASE_API_KEY": "AIzaSyDTAuFugSUVglVa0PzSTq1uueoEU-pnnDk",
-      "FIREBASE_AUTH_DOMAIN": "votum-c67c3.firebaseapp.com",
-      "FIREBASE_PROJECT_ID": "votum-c67c3",
-      "FIREBASE_STORAGE_BUCKET": "votum-c67c3.firebasestorage.app",
-      "FIREBASE_MESSAGING_SENDER_ID": "451203440054",
-      "FIREBASE_APP_ID": "1:451203440054:web:f2449c6a6f50697d163517",
-      "FIREBASE_MEASUREMENT_ID": "G-J2P83RGR6Y"
     }
   }
 }
