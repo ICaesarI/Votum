@@ -1,77 +1,90 @@
-import React, { useState } from "react";
-import { View, TextInput, Button, Text, StyleSheet } from "react-native";
-import { auth, db, setDoc, doc } from "../firebaseConfig"; // Import necessary functions
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigation } from "@react-navigation/native"; // For navigation (if you want to redirect after signup)
+import React, {useState} from 'react';
+import { View, Text, TextInput, Button, Alert } from 'react-native'
+import { createUserWithEmailAndPassword  } from "firebase/auth";       //Funcion necesaria para crear credenciales de usuario
+import { auth, db, setDoc, doc} from "@/firebaseConfig";
+const signUpScreen = () => {
+  const [name, setName] = useState('');           //Nombre
+  const [lastName, setLastName] = useState('');   //Apellido
+  const [password, setPassword] = useState('');   //Contraseña
+  const [email, setEmail] = useState('');         //Email
 
-const SignupScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const navigation = useNavigation(); // Hook for navigation
+  const handleSignUp = async () => 
+  {
+    try 
+    {
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredentials.user;
 
-  const handleSignup = async () => {
-    try {
-      // Create user with Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+      // Store user data in firestore
+      await setDoc(doc(db, "users", user.uid),
+      {
+        UID: user.uid,
+        name: name,
+        lastName: lastName,
+        email: email,
+        password: password,
+        createdAt: new Date(),
+      })
+      Alert.alert("Exito", "Usuario creado correctamente");
+    } catch(error)
+      {
+        Alert.alert("Error", `Ocurrio el error: ${error}`);
+      }
+   }
 
-      // Save user information to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        uid: user.uid,
-        createdAt: new Date().toISOString(),
-      });
+   return (
+    <View>
+      <Text>Regístrate</Text>
 
-      alert("User account created & signed in!");
-      navigation.navigate("/"); // Navigate to another screen after signup (optional)
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  return (
-    <View style={styles.container}>
+      <Text>Nombre</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Email"
+        value={name}
+        onChangeText={setName}
+        placeholder="Ingresa tu Nombre"
+      />
+      <Text>Apellidos</Text>
+      <TextInput
+        value={lastName}
+        onChangeText={setLastName}
+        placeholder="Ingresa tus apellidos"
+      />
+      
+      <Text>Email</Text> 
+      <TextInput
         value={email}
         onChangeText={setEmail}
+        keyboardType="email-address"
+        placeholder="Ingresa tu email"
       />
+      <Text>Contrasena</Text>
       <TextInput
-        style={styles.input}
-        placeholder="Password"
         value={password}
-        secureTextEntry
         onChangeText={setPassword}
+        placeholder = "Ingrese tu contraseña"
+        secureTextEntry
       />
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
-      <Button title="Sign Up" onPress={handleSignup} />
+
+      <Button onPress={handleSignUp}>
+        Registrarse
+      </Button>
     </View>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 20,
-  },
-  input: {
-    height: 40,
-    borderColor: "#ccc",
-    borderWidth: 1,
-    marginBottom: 20,
-    paddingLeft: 10,
-  },
-  errorText: {
-    color: "red",
-    marginBottom: 10,
-  },
-});
+export default signUpScreen;
 
-export default SignupScreen;
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
