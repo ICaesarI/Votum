@@ -45,6 +45,36 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="signIn"
+        options={{
+          title: "Iniciar Sesión",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={
+                focused ? "information-circle" : "information-circle-outline"
+              }
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="signUp"
+        options={{
+          title: "Registrarse",
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={
+                focused ? "information-circle" : "information-circle-outline"
+              }
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
     </Tabs>
   );
 }
