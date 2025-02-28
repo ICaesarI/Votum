@@ -7,9 +7,12 @@ import subEventButtonCardStyles from "../styles/subEventButtonCard"
 
 //Componente con para los subEventos de cada votación
 
+type navigation = StackNavigationProp<RootStackParamList, "Home">;
 interface Props{
     backgroundName:string,
-    isLast:Boolean
+    isLast:Boolean,
+    navigation:navigation,
+    onPressNavigate:keyof RootStackParamList
 }
 
 //Obtener la ruta de las imagenes segun el nombre obtenido en el json
@@ -20,8 +23,7 @@ const images:Record<string,any> ={
 }
 
 
-export default function SubEventButtonCard({backgroundName, isLast}:Props){
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();//Hook para la navegación
+export default function SubEventButtonCard({backgroundName, isLast, navigation, onPressNavigate}:Props){
     const [pressed, setPressed] = useState(false);//Botón para identicar si fue presionado
     return(
         <View style={subEventButtonCardStyles.container}>
@@ -31,7 +33,7 @@ export default function SubEventButtonCard({backgroundName, isLast}:Props){
                     isLast ? subEventButtonCardStyles.lastEventButtonContainer : subEventButtonCardStyles.eventButtonContainer,
                     pressed ? {backgroundColor:"#2B6E52"} : {backgroundColor: "#000000"}
                 ]} 
-                onPress={() => navigation.navigate("Categories")}//Al ser presionado se navega a otra pantalla
+                onPress={() => navigation.navigate(onPressNavigate)}//Al ser presionado se navega a otra pantalla
                 >
                 <ImageBackground
                     source={images[backgroundName]}//Apartir del nombre se busca la url

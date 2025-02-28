@@ -18,7 +18,6 @@ const eventButtonStyles = StyleSheet.create({
         width: width * 0.95,
         height:width * 0.5,
         borderRadius: 20,
-        
     },
 
     eventPressedButtonContainer:{

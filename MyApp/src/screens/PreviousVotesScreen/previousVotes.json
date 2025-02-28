@@ -1,0 +1,24 @@
+{
+    "previousVotes":[
+        {
+            "id": 1,
+            "name": "El más imbecil",
+            "category": "masImbecil"
+        },
+        {
+            "id": 2,
+            "name": "La idiotez del año",
+            "category": "idiotezAnio"
+        },
+        {
+            "id": 3,
+            "name": "Video del año",
+            "category": "videoAnio"
+        },
+        {
+            "id": 4,
+            "name": "El más nalgón",
+            "category": "masNalgon"
+        }
+    ]
+}

@@ -2,15 +2,18 @@
     "sub_events":[
         {
             "id": 1,
-            "background_name": "Nominaciones"
+            "background_name": "Nominaciones",
+            "onPressNavigate": "Categories"
         },
         {
             "id": 2,
-            "background_name": "VotacionesPrevias"
+            "background_name": "VotacionesPrevias",
+             "onPressNavigate": "PreviousVotes"
         },
         {
             "id": 3,
-            "background_name": "BergamotaFest"
+            "background_name": "BergamotaFest",
+             "onPressNavigate": "Categories"
         }
     ]
 }

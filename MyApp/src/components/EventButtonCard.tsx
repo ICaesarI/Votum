@@ -1,19 +1,23 @@
 import React, { useState, useRef, useEffect} from "react"
 import {View, Text, TouchableOpacity, ImageBackground, Animated} from "react-native"
 import Timer from "./Timer";
+import {StackNavigationProp } from "@react-navigation/stack";
+import {RootStackParamList} from "../navigation/StackNavigator"
 import eventButtonStyles from "../styles/eventButtonStyles";
 import SubEventButtonCard from "./SubEventButtonCardStyles";
-import subEvents from "../screens/HomeScreen/subEvents.json" //Json con los subEventos de las votaciones
+import subEventsJson from "../screens/HomeScreen/subEvents.json" //Json con los subEventos de las votaciones
 
 //Carta que mostrara las votaciones activa
+
+type navigation = StackNavigationProp<RootStackParamList, "Home">;
 
 interface Props{
     title:string,
     date:string,
     status:string,
-    backgroundImage:string
+    backgroundImage:string,
+    navigation: navigation
 }
-
 //Obtener la ruta de las imagenes segun el nombre obtenido en el json
 const images:Record<string,any>={
     retaFutbol: require("../../assets/images/retaFutbol.jpg"),
@@ -22,9 +26,9 @@ const images:Record<string,any>={
     veladaBox: require("../../assets/images/veladaBox.jpg"),
 }
 
-export default function EventButtonCard({title, date, status, backgroundImage}:Props){
+export default function EventButtonCard({title, date, status, backgroundImage, navigation}:Props){
     const [pressed, setPressed] = useState(false);//Bandera para identificar si se presiono.
-    const fadeAnimations = useRef(subEvents.sub_events.map(() => new Animated.Value(0))).current;//Animaciones al ser presionado
+    const fadeAnimations = useRef(subEventsJson.sub_events.map(() => new Animated.Value(0))).current;//Animaciones al ser presionado
 
     useEffect(() => {
         if (pressed) {
@@ -63,7 +67,7 @@ export default function EventButtonCard({title, date, status, backgroundImage}:P
                     imageStyle={eventButtonStyles.imageStyle}
                 >
                     <View style={eventButtonStyles.topInfoContainer}>{/*Info situada hasta arriba de la carta*/}
-                        <Text style={[eventButtonStyles.topInfo,{/*{backgroundColor: "orange"}*/}]}>{status}</Text>
+                        <Text style={[eventButtonStyles.topInfo]}>{status}</Text>
                         <Text style={[eventButtonStyles.topInfo, {textAlign:"right"},{/*{backgroundColor: "green", textAlign: "right"}*/}]}>{date}</Text>
                     </View>
 
@@ -77,11 +81,13 @@ export default function EventButtonCard({title, date, status, backgroundImage}:P
                 </ImageBackground>
             </TouchableOpacity>
             {/* Contenedor animado. Al ser presionado se mapea la informacion en otro componente */}
-            {pressed && subEvents.sub_events.map((subEvent, index) => (
+            {pressed && subEventsJson.sub_events.map((subEvent, index) => (
                 <Animated.View key={subEvent.id} style={{ opacity: fadeAnimations[index] }}>
                     <SubEventButtonCard 
                         backgroundName={subEvent.background_name}
-                        isLast={index === subEvents.sub_events.length - 1}
+                        isLast={index === subEventsJson.sub_events.length - 1}
+                        navigation={navigation}
+                        onPressNavigate={subEvent.onPressNavigate as keyof RootStackParamList}
                     />
                 </Animated.View>
             ))}

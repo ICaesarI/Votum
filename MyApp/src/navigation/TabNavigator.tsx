@@ -1,12 +1,15 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import CategoriesScreen from "../screens/CategoriesScreen/CategoriesScreen";
+import { AppStack } from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator(){
     return(
-        <Tab.Navigator 
+        <Tab.Navigator  
+            initialRouteName="AppStack"
             screenOptions={{
                 tabBarLabelPosition:"below-icon",
                 tabBarActiveTintColor: "#194D3D", 
@@ -19,7 +22,7 @@ export default function TabNavigator(){
                 ),
                 }}    
         >
-            <Tab.Screen name="Home" component={HomeScreen}/>
+            <Tab.Screen name="AppStack" component={AppStack}/>
         </Tab.Navigator>
     )
 }
